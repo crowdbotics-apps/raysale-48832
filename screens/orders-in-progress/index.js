@@ -1,141 +1,94 @@
 import React, { useState, useEffect } from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  Pressable,
-  Image,
-  FlatList
-} from "react-native";
+import { Text, View, StyleSheet, Pressable, Image, FlatList } from "react-native";
 
 const OrdersInProgress = () => {
   const [selectedTab, setSelectedTab] = useState(0);
   const [orders, setOrders] = useState([]);
   useEffect(() => {
-    setOrders([
-      {
-        id: 1,
-        customer: "Customer name",
-        orderNumber: "546589",
-        location: "Street name, City, State, Zip",
-        time: "12:00 PM",
-        status: "in-progress",
-        paymentOption: "Cash on Delivery",
-        totalPrice: 14,
-        image: require("./assets/orderImage.png"),
-        date: "05/07/22"
-      },
-      {
-        id: 2,
-        customer: "Customer name",
-        orderNumber: "546589",
-        location: "Street name, City, State, Zip",
-        time: "12:00 PM",
-        status: "in-progress",
-        paymentOption: "Cash on Delivery",
-        totalPrice: 14,
-        image: require("./assets/orderImage.png"),
-        date: "05/07/22"
-      },
-      {
-        id: 3,
-        customer: "Customer name",
-        orderNumber: "546589",
-        location: "Street name, City, State, Zip",
-        time: "12:00 PM",
-        status: "in-progress",
-        paymentOption: "Cash on Delivery",
-        totalPrice: 14,
-        image: require("./assets/orderImage.png"),
-        date: "05/07/22"
-      },
-      {
-        id: 4,
-        customer: "Customer name",
-        orderNumber: "546589",
-        location: "Street name, City, State, Zip",
-        time: "12:00 PM",
-        status: "in-progress",
-        paymentOption: "Cash on Delivery",
-        totalPrice: 14,
-        image: require("./assets/orderImage.png"),
-        date: "05/07/22"
-      }
-    ]);
+    setOrders([{
+      id: 1,
+      customer: "Customer name",
+      orderNumber: "546589",
+      location: "Street name, City, State, Zip",
+      time: "12:00 PM",
+      status: "in-progress",
+      paymentOption: "Cash on Delivery",
+      totalPrice: 14,
+      image: require("./assets/orderImage.png"),
+      date: "05/07/22"
+    }, {
+      id: 2,
+      customer: "Customer name",
+      orderNumber: "546589",
+      location: "Street name, City, State, Zip",
+      time: "12:00 PM",
+      status: "in-progress",
+      paymentOption: "Cash on Delivery",
+      totalPrice: 14,
+      image: require("./assets/orderImage.png"),
+      date: "05/07/22"
+    }, {
+      id: 3,
+      customer: "Customer name",
+      orderNumber: "546589",
+      location: "Street name, City, State, Zip",
+      time: "12:00 PM",
+      status: "in-progress",
+      paymentOption: "Cash on Delivery",
+      totalPrice: 14,
+      image: require("./assets/orderImage.png"),
+      date: "05/07/22"
+    }, {
+      id: 4,
+      customer: "Customer name",
+      orderNumber: "546589",
+      location: "Street name, City, State, Zip",
+      time: "12:00 PM",
+      status: "in-progress",
+      paymentOption: "Cash on Delivery",
+      totalPrice: 14,
+      image: require("./assets/orderImage.png"),
+      date: "05/07/22"
+    }]);
   }, []);
-  return (
-    <View style={styles.container}>
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        ListHeaderComponent={() => (
-          <TabView
-            tabTitles={["In Progress", "Completed"]}
-            selected={selectedTab}
-            onPress={setSelectedTab}
-            style={styles.tabView}
-          />
-        )}
-        data={orders}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-          <View style={styles.productContainer}>
+  return <View style={styles.container}>
+      <FlatList showsVerticalScrollIndicator={false} ListHeaderComponent={() => <TabView tabTitles={["In Progress", "Completed"]} selected={selectedTab} onPress={setSelectedTab} style={styles.tabView} />} data={orders} keyExtractor={item => item.id.toString()} renderItem={({
+      item
+    }) => <View style={styles.productContainer}>
             <View style={styles.productHeader}>
               <Image source={item.image} style={styles.productImage} />
               <View style={styles.productInfo}>
                 <Text style={styles.mainText}>{item.customer}</Text>
                 <Text style={styles.subText}>#{item.orderNumber}</Text>
               </View>
-              <Pressable
-                style={[
-                  styles.statusBtn,
-                  item.status === "in-progress" ? null : styles.green
-                ]}
-              >
-                <Image
-                  source={
-                    item.status === "in-progress"
-                      ? require("./assets/plusIcon.png")
-                      : require("./assets/doubleTickIcon.png")
-                  }
-                  style={styles.plusIcon}
-                />
+              <Pressable style={[styles.statusBtn, item.status === "in-progress" ? null : styles.green]}>
+                <Image source={item.status === "in-progress" ? require("./assets/plusIcon.png") : require("./assets/doubleTickIcon.png")} style={styles.plusIcon} />
                 <Text style={styles.statusText}>
                   {item.status === "in-progress" ? "Accept" : "Delivered"}
                 </Text>
               </Pressable>
             </View>
             <View style={styles.flexRow}>
-              <Image
-                source={require("./assets/locationIcon.png")}
-                style={styles.icon}
-              />
+              <Image source={require("./assets/locationIcon.png")} style={styles.icon} />
               <Text style={styles.text}>{item.location}</Text>
             </View>
             <View style={styles.flexRow}>
-              <Image
-                source={require("./assets/clockIcon.png")}
-                style={styles.icon}
-              />
+              <Image source={require("./assets/clockIcon.png")} style={styles.icon} />
               <Text style={styles.text}>
                 Ordered: {item.time} {item.date}
               </Text>
             </View>
             <View style={styles.flexRow}>
-              <Image
-                source={require("./assets/walletIcon.png")}
-                style={styles.icon}
-              />
+              <Image source={require("./assets/walletIcon.png")} style={styles.icon} />
               <Text style={styles.text}>{item.paymentOption}</Text>
               <Text style={styles.pricingText}>
                 ${item.totalPrice.toFixed(2)}
               </Text>
             </View>
-          </View>
-        )}
-      />
-    </View>
-  );
+          </View>} />
+    </View>;
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -232,7 +185,6 @@ const styles = StyleSheet.create({
     flex: 1
   }
 });
-
 export default OrdersInProgress;
 
 const TabView = ({
@@ -251,42 +203,12 @@ const TabView = ({
     backgroundColor: backgroundColor || "#F1F1F1"
   };
   const propStyle = style || {};
-  return (
-    <View
-      style={[tabViewStyles.paletteContainer, backgroundColorStyle, propStyle]}
-    >
-      {tabTitles.map((title, index) => (
-        <Pressable
-          onPress={() => (onPress ? onPress(index) : null)}
-          style={
-            index === selected
-              ? [tabViewStyles.selected, tabColorStyle, tabViewStyles.tabItem]
-              : [
-                  tabViewStyles.unSelected,
-                  backgroundColorStyle,
-                  tabViewStyles.tabItem
-                ]
-          }
-          key={index}
-        >
-          {icons
-            ? (
-            <Image
-              source={icons[index]}
-              style={[
-                tabViewStyles.icon,
-                index === selected
-                  ? tabViewStyles.selectedIcon
-                  : tabViewStyles.unSelectedIcon
-              ]}
-            />
-              )
-            : null}
+  return <View style={[tabViewStyles.paletteContainer, backgroundColorStyle, propStyle]}>
+      {tabTitles.map((title, index) => <Pressable onPress={() => onPress ? onPress(index) : null} style={index === selected ? [tabViewStyles.selected, tabColorStyle, tabViewStyles.tabItem] : [tabViewStyles.unSelected, backgroundColorStyle, tabViewStyles.tabItem]} key={index}>
+          {icons ? <Image source={icons[index]} style={[tabViewStyles.icon, index === selected ? tabViewStyles.selectedIcon : tabViewStyles.unSelectedIcon]} /> : null}
           <Text>{title}</Text>
-        </Pressable>
-      ))}
-    </View>
-  );
+        </Pressable>)}
+    </View>;
 };
 
 const tabViewStyles = StyleSheet.create({
