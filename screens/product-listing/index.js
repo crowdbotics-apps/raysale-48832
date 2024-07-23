@@ -1,54 +1,42 @@
 import React, { useState, useEffect } from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  Pressable,
-  FlatList
-} from "react-native";
+import { Text, View, StyleSheet, Image, Pressable, FlatList } from "react-native";
 
 const ProductListing = () => {
   const [products, setProducts] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
   useEffect(() => {
-    setProducts([
-      {
-        id: 1,
-        title: "Dish name",
-        count: 1,
-        image: require("./assets/productImage.png")
-      },
-      {
-        id: 2,
-        title: "Dish name",
-        count: 1,
-        image: require("./assets/productImage.png")
-      },
-      {
-        id: 3,
-        title: "Dish name",
-        count: 1,
-        image: require("./assets/productImage.png")
-      },
-      {
-        id: 4,
-        title: "Dish name",
-        count: 1,
-        image: require("./assets/productImage.png")
-      }
-    ]);
+    setProducts([{
+      id: 1,
+      title: "Dish name",
+      count: 1,
+      image: require("./assets/productImage.png")
+    }, {
+      id: 2,
+      title: "Dish name",
+      count: 1,
+      image: require("./assets/productImage.png")
+    }, {
+      id: 3,
+      title: "Dish name",
+      count: 1,
+      image: require("./assets/productImage.png")
+    }, {
+      id: 4,
+      title: "Dish name",
+      count: 1,
+      image: require("./assets/productImage.png")
+    }]);
   }, []);
+
   const handleProductSelect = product => {
     if (selectedProducts.includes(product)) {
-      const newSelectedProducts = selectedProducts.filter(
-        selectedProduct => selectedProduct.id !== product.id
-      );
+      const newSelectedProducts = selectedProducts.filter(selectedProduct => selectedProduct.id !== product.id);
       setSelectedProducts(newSelectedProducts);
     } else {
       setSelectedProducts([...selectedProducts, product]);
     }
   };
+
   const handleCountChange = (type, product) => {
     const newProducts = products.map(item => {
       if (item.id === product.id) {
@@ -60,23 +48,19 @@ const ProductListing = () => {
           }
         }
       }
+
       return item;
     });
     setProducts(newProducts);
   };
-  return (
-    <View style={styles.container}>
-      <FlatList
-        data={products}
-        renderItem={({ item }) => (
-          <View style={styles.productContainer}>
+
+  return <View style={styles.container}>
+      <FlatList data={products} renderItem={({
+      item
+    }) => <View style={styles.productContainer}>
             <View style={styles.imageContainer}>
               <Image style={styles.image} source={item.image} />
-              <Radio
-                style={styles.radio}
-                selected={selectedProducts.includes(item)}
-                onPress={() => handleProductSelect(item)}
-              />
+              <Radio style={styles.radio} selected={selectedProducts.includes(item)} onPress={() => handleProductSelect(item)} />
             </View>
             <View style={styles.flexRow}>
               <Text style={styles.productName}>{item.title}</Text>
@@ -85,26 +69,18 @@ const ProductListing = () => {
                   {item.count} item{item.count > 1 && "s"}
                 </Text>
                 <Pressable onPress={() => handleCountChange("decrease", item)}>
-                  <Image
-                    style={styles.icon}
-                    source={require("./assets/decrementIcon.png")}
-                  />
+                  <Image style={styles.icon} source={require("./assets/decrementIcon.png")} />
                 </Pressable>
                 <Pressable onPress={() => handleCountChange("increase", item)}>
-                  <Image
-                    style={styles.icon}
-                    source={require("./assets/incrementIcon.png")}
-                  />
+                  <Image style={styles.icon} source={require("./assets/incrementIcon.png")} />
                 </Pressable>
               </View>
             </View>
             <Button buttonText="Order" style={styles.button} hideShadow />
-          </View>
-        )}
-      />
-    </View>
-  );
+          </View>} />
+    </View>;
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -170,7 +146,6 @@ const styles = StyleSheet.create({
     marginVertical: 15
   }
 });
-
 export default ProductListing;
 
 const Button = params => {
@@ -184,20 +159,16 @@ const Button = params => {
   const btnText = {
     color: textColor
   };
-  return (
-    <View style={[buttonStyles.btnContainer, params.style]}>
+  return <View style={[buttonStyles.btnContainer, params.style]}>
       <View style={!params.hideShadow ? buttonStyles.shadowContainer : null}>
-        <Pressable
-          style={[buttonStyles.btn, btnStyle]}
-          onPress={params.onPress}>
+        <Pressable style={[buttonStyles.btn, btnStyle]} onPress={params.onPress}>
           <Text style={[buttonStyles.btnText, btnText]}>
             {params.buttonText}
           </Text>
           <View style={styles.childrenContainer}>{params.children}</View>
         </Pressable>
       </View>
-    </View>
-  );
+    </View>;
 };
 
 const buttonStyles = StyleSheet.create({
@@ -223,7 +194,6 @@ const buttonStyles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
-
     flexDirection: "row"
   },
   btnText: {
@@ -238,13 +208,9 @@ const buttonStyles = StyleSheet.create({
 });
 
 const Radio = props => {
-  return (
-    <Pressable
-      style={[radioStyles.container, props.style]}
-      onPress={props.onPress}>
+  return <Pressable style={[radioStyles.container, props.style]} onPress={props.onPress}>
       {props.selected && <View style={radioStyles.radio} />}
-    </Pressable>
-  );
+    </Pressable>;
 };
 
 const radioStyles = StyleSheet.create({

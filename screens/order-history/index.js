@@ -1,104 +1,79 @@
 import React, { useState, useEffect } from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  FlatList,
-  Image,
-  Pressable
-} from "react-native";
+import { Text, View, StyleSheet, FlatList, Image, Pressable } from "react-native";
 
 const OrderHistory = () => {
   const [selectedTab, setSelectedTab] = useState(0);
   const [ordersHistory, setOrdersHistory] = useState([]);
   useEffect(() => {
-    setOrdersHistory([
-      {
-        id: 1,
-        name: "Order Name",
-        date: "03 June 2022",
-        time: "19:00",
-        description: "lorem ipsum dolor sit amet",
-        itemsCount: 2,
-        totalPrice: 25,
-        image: require("./assets/productImage.png")
-      },
-      {
-        id: 2,
-        name: "Order Name",
-        date: "03 June 2022",
-        time: "19:00",
-        description: "lorem ipsum dolor sit amet",
-        itemsCount: 2,
-        totalPrice: 25,
-        image: require("./assets/productImage.png")
-      },
-      {
-        id: 3,
-        name: "Order Name",
-        date: "03 June 2022",
-        time: "19:00",
-        description: "lorem ipsum dolor sit amet",
-        itemsCount: 2,
-        totalPrice: 25,
-        image: require("./assets/productImage.png")
-      },
-      {
-        id: 4,
-        name: "Order Name",
-        date: "03 June 2022",
-        time: "19:00",
-        description: "lorem ipsum dolor sit amet",
-        itemsCount: 2,
-        totalPrice: 25,
-        image: require("./assets/productImage.png")
-      },
-      {
-        id: 5,
-        name: "Order Name",
-        date: "03 June 2022",
-        time: "19:00",
-        description: "lorem ipsum dolor sit amet",
-        itemsCount: 2,
-        totalPrice: 25,
-        image: require("./assets/productImage.png")
-      },
-      {
-        id: 6,
-        name: "Order Name",
-        date: "03 June 2022",
-        time: "19:00",
-        description: "lorem ipsum dolor sit amet",
-        itemsCount: 2,
-        totalPrice: 25,
-        image: require("./assets/productImage.png")
-      },
-      {
-        id: 7,
-        name: "Order Name",
-        date: "03 June 2022",
-        time: "19:00",
-        description: "lorem ipsum dolor sit amet",
-        itemsCount: 2,
-        totalPrice: 25,
-        image: require("./assets/productImage.png")
-      }
-    ]);
+    setOrdersHistory([{
+      id: 1,
+      name: "Order Name",
+      date: "03 June 2022",
+      time: "19:00",
+      description: "lorem ipsum dolor sit amet",
+      itemsCount: 2,
+      totalPrice: 25,
+      image: require("./assets/productImage.png")
+    }, {
+      id: 2,
+      name: "Order Name",
+      date: "03 June 2022",
+      time: "19:00",
+      description: "lorem ipsum dolor sit amet",
+      itemsCount: 2,
+      totalPrice: 25,
+      image: require("./assets/productImage.png")
+    }, {
+      id: 3,
+      name: "Order Name",
+      date: "03 June 2022",
+      time: "19:00",
+      description: "lorem ipsum dolor sit amet",
+      itemsCount: 2,
+      totalPrice: 25,
+      image: require("./assets/productImage.png")
+    }, {
+      id: 4,
+      name: "Order Name",
+      date: "03 June 2022",
+      time: "19:00",
+      description: "lorem ipsum dolor sit amet",
+      itemsCount: 2,
+      totalPrice: 25,
+      image: require("./assets/productImage.png")
+    }, {
+      id: 5,
+      name: "Order Name",
+      date: "03 June 2022",
+      time: "19:00",
+      description: "lorem ipsum dolor sit amet",
+      itemsCount: 2,
+      totalPrice: 25,
+      image: require("./assets/productImage.png")
+    }, {
+      id: 6,
+      name: "Order Name",
+      date: "03 June 2022",
+      time: "19:00",
+      description: "lorem ipsum dolor sit amet",
+      itemsCount: 2,
+      totalPrice: 25,
+      image: require("./assets/productImage.png")
+    }, {
+      id: 7,
+      name: "Order Name",
+      date: "03 June 2022",
+      time: "19:00",
+      description: "lorem ipsum dolor sit amet",
+      itemsCount: 2,
+      totalPrice: 25,
+      image: require("./assets/productImage.png")
+    }]);
   }, []);
-  return (
-    <View style={styles.container}>
-      <FlatList
-        ListHeaderComponent={() => (
-          <TabView
-            tabTitles={["Rejected", "Accepted", "Pending", "Completed"]}
-            selected={selectedTab}
-            onPress={setSelectedTab}
-            style={styles.tabView}
-          />
-        )}
-        data={ordersHistory}
-        renderItem={({ item }) => (
-          <View style={styles.cardContainer}>
+  return <View style={styles.container}>
+      <FlatList ListHeaderComponent={() => <TabView tabTitles={["Rejected", "Accepted", "Pending", "Completed"]} selected={selectedTab} onPress={setSelectedTab} style={styles.tabView} />} data={ordersHistory} renderItem={({
+      item
+    }) => <View style={styles.cardContainer}>
             <View style={styles.infoContainer}>
               <Image source={item.image} style={styles.productImage} />
               <View>
@@ -117,13 +92,10 @@ const OrderHistory = () => {
                 <Text style={styles.btnText}>Completed</Text>
               </Pressable>
             </View>
-          </View>
-        )}
-        keyExtractor={item => item.id.toString()}
-      />
-    </View>
-  );
+          </View>} keyExtractor={item => item.id.toString()} />
+    </View>;
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -192,7 +164,6 @@ const styles = StyleSheet.create({
     fontSize: 12
   }
 });
-
 export default OrderHistory;
 
 const TabView = ({
@@ -211,40 +182,12 @@ const TabView = ({
     backgroundColor: backgroundColor || "#F1F1F1"
   };
   const propStyle = style || {};
-  return (
-    <View
-      style={[tabViewStyles.paletteContainer, backgroundColorStyle, propStyle]}>
-      {tabTitles.map((title, index) => (
-        <Pressable
-          onPress={() => (onPress ? onPress(index) : null)}
-          style={
-            index === selected
-              ? [tabViewStyles.selected, tabColorStyle, tabViewStyles.tabItem]
-              : [
-                  tabViewStyles.unSelected,
-                  backgroundColorStyle,
-                  tabViewStyles.tabItem
-                ]
-          }
-          key={index}>
-          {icons
-            ? (
-            <Image
-              source={icons[index]}
-              style={[
-                tabViewStyles.icon,
-                index === selected
-                  ? tabViewStyles.selectedIcon
-                  : tabViewStyles.unSelectedIcon
-              ]}
-            />
-              )
-            : null}
+  return <View style={[tabViewStyles.paletteContainer, backgroundColorStyle, propStyle]}>
+      {tabTitles.map((title, index) => <Pressable onPress={() => onPress ? onPress(index) : null} style={index === selected ? [tabViewStyles.selected, tabColorStyle, tabViewStyles.tabItem] : [tabViewStyles.unSelected, backgroundColorStyle, tabViewStyles.tabItem]} key={index}>
+          {icons ? <Image source={icons[index]} style={[tabViewStyles.icon, index === selected ? tabViewStyles.selectedIcon : tabViewStyles.unSelectedIcon]} /> : null}
           <Text>{title}</Text>
-        </Pressable>
-      ))}
-    </View>
-  );
+        </Pressable>)}
+    </View>;
 };
 
 const tabViewStyles = StyleSheet.create({
