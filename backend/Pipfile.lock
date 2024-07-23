@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "2d8641aa8ff8d54dfe20b13761fbb409c1e35d562f3dcc3571e911c991885675"
+            "sha256": "9cf64eb7d4485bd6ed069fd1c70d1bda88536e673224cdbe0da9f4a13985f93f"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -103,6 +103,10 @@
         "cb-django-push-notifications": {
             "editable": true,
             "path": "./modules/django_push_notifications"
+        },
+        "cb-django-s3-file-uploader": {
+            "editable": true,
+            "path": "./modules/django_s3_file_uploader"
         },
         "cb-payments": {
             "editable": true,
