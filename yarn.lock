@@ -1481,7 +1481,7 @@
     prop-types "15.8.1"
     react-native-keyboard-aware-scroll-view "^0.9.3"
 
-"@modules/mapbox-maps@file:./modules/mapbox-maps/":
+"@modules/mapbox-maps@file:./modules/mapbox-maps":
   version "1.0.0"
 
 "@modules/maps@file:./modules/maps":
@@ -1492,6 +1492,9 @@
   dependencies:
     prop-types "^15.8.1"
     react-native-app-intro-slider "^4.0.4"
+
+"@modules/privacy-policy-webview@file:./modules/privacy-policy-webview/":
+  version "1.0.0"
 
 "@modules/push-notifications@file:./modules/push-notifications":
   version "1.0.0"
