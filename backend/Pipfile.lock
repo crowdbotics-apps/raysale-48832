@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "714b515568c2f0b410200a2848909255c9fb757739c2f7eb785c558fb9511d7d"
+            "sha256": "0f798f7b41abecdf76c7b1b39d682284f98a78828c588c7f405f6de2af1824a0"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -107,6 +107,10 @@
         "cb-profile": {
             "editable": true,
             "path": "./modules/profile"
+        },
+        "cb-terms-and-conditions": {
+            "editable": true,
+            "path": "./modules/terms_and_conditions"
         },
         "certifi": {
             "hashes": [
