@@ -21,6 +21,7 @@
     "@modules/maps": "file:./modules/maps/",
     "@modules/onboarding": "file:./modules/onboarding/",
     "@modules/payments": "file:./modules/payments",
+    "@modules/privacy-policy": "file:./modules/privacy-policy",
     "@modules/privacy-policy-webview": "file:./modules/privacy-policy-webview/",
     "@modules/profile": "file:./modules/profile",
     "@modules/push-notifications": "file:./modules/push-notifications/",
